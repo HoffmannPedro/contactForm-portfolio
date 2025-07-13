@@ -1,5 +1,5 @@
 # Usamos una imagen oficial de Java 21
-FROM eclipse-temurin:21-jdk-alpine
+FROM maven:3.9.7-eclipse-temurin-21-alpine
 
 # Directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Instalamos dependencias y construimos el JAR
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Exponemos el puerto donde corre Spring Boot
 EXPOSE 8080
